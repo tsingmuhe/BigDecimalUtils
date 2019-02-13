@@ -62,6 +62,7 @@ public class BigDecimalUtils {
     public static BigDecimal stringSafeGetBigDecimal(String stringBigDecimal) {
         String symbol = AsciiSymbolContants.DISPLAY_SYMBOL + AsciiSymbolContants.NOT_DISPLAY_SYMBOL;
         symbol = RegExUtils.replaceAll(symbol, "\\-", "");
+        symbol = RegExUtils.replaceAll(symbol, "\\.", "");
         stringBigDecimal = StringUtils.replaceChars(stringBigDecimal, symbol, "");
         return NumberUtils.isCreatable(stringBigDecimal) ?
             new BigDecimal(stringBigDecimal) : BigDecimal.ZERO;
