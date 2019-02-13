@@ -58,11 +58,11 @@ Calculation support only String and BigDecimal:
 * 支持 所有算数类型的对比
 * 如果传入String不是一个能转换为数字的 字符串 得到的结果将是0
 * 支援带分隔符的数字转换  例如 +1,000,000 -1,000,000
-* 去掉了Ascii码中所有符号 除了- 符号
+* 去掉了Ascii码中所有符号 除了- 和 . 符号
 
 ## add feature
 
 * Support for comparison of all arithmetic types
 * If the passed String is not a string that can be converted to a number, the result will be 0
 * Support for delimited numeric conversions such as +1,000,000 -1,000,000
-* Removed all symbols from the Ascii code except the - symbol
+* Removed all symbols from the Ascii code except the - and . symbol `\u002d\u002e`
