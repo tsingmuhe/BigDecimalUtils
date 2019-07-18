@@ -1,9 +1,10 @@
 package com.sunchp.utils.math;
 
-import java.math.BigDecimal;
 import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+
+import java.math.BigDecimal;
 
 /**
  * @author albert
@@ -14,20 +15,12 @@ public class BigDecimalUtils {
     private BigDecimalUtils() {
     }
 
-    public static BigDecimalLogic is(BigDecimal value) {
-        return new BigDecimalLogic(value);
-    }
-
     public static BigDecimalLogic is(String value) {
         return new BigDecimalLogic(value);
     }
 
     public static BigDecimalLogic is(Number value) {
         return new BigDecimalLogic(value.toString());
-    }
-
-    public static BigDecimalCalculation cal(BigDecimal value) {
-        return new BigDecimalCalculation(value);
     }
 
     public static BigDecimalCalculation cal(String value) {
@@ -59,12 +52,21 @@ public class BigDecimalUtils {
         return v1.compareTo(v2) > 0 ? v1 : v2;
     }
 
-    public static BigDecimal stringSafeGetBigDecimal(String stringBigDecimal) {
+    public static BigDecimal stringSafeGetBigDecimal(String stringNumber) {
+        stringNumber = replaceAllNotDigitalCharsExceptDotAndMinusSign(stringNumber);
+        if (NumberUtils.isCreatable(stringNumber)) {
+            return new BigDecimal(stringNumber);
+        }
+        throw new NumberFormatException("Argument "+stringNumber + " is not a digital");
+    }
+
+    private static String replaceAllNotDigitalCharsExceptDotAndMinusSign(String stringNumber) {
         String symbol = AsciiSymbolContants.DISPLAY_SYMBOL + AsciiSymbolContants.NOT_DISPLAY_SYMBOL;
         symbol = RegExUtils.replaceAll(symbol, "\\-", "");
         symbol = RegExUtils.replaceAll(symbol, "\\.", "");
-        stringBigDecimal = StringUtils.replaceChars(stringBigDecimal, symbol, "");
-        return NumberUtils.isCreatable(stringBigDecimal) ?
-            new BigDecimal(stringBigDecimal) : BigDecimal.ZERO;
+        stringNumber = StringUtils.replaceChars(stringNumber, symbol, "");
+        return stringNumber;
     }
+
+
 }

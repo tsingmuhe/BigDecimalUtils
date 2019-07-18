@@ -9,7 +9,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BigDecimalLogicTest {
-    BigDecimal one = new BigDecimal("1.4201");
+    BigDecimal one = new BigDecimal("0.1");
     BigDecimal two = new BigDecimal("3.521");
     BigDecimal three = new BigDecimal("6.521");
     BigDecimal four = new BigDecimal("6.521");
