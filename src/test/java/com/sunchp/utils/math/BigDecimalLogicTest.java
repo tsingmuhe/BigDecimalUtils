@@ -9,19 +9,30 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BigDecimalLogicTest {
-    BigDecimal one = new BigDecimal("1.4201");
+    BigDecimal one = new BigDecimal("0.1");
     BigDecimal two = new BigDecimal("3.521");
     BigDecimal three = new BigDecimal("6.521");
     BigDecimal four = new BigDecimal("6.521");
     BigDecimal five = null;
+    double aDouble = 6.521;
+    float aFloat = 6.521F;
+
+
 
     @Test
     public void testTwoBigdecimalsEquality() {
+
+
         assertTrue(is(three).eq(four));
         assertTrue(is(one).eq(one));
         assertTrue(!is(one).eq(two));
         assertTrue(is(three).eq("6.521"));
+        assertTrue(is(three).eq(aDouble));
+        assertTrue(is(three).eq(aFloat));
         assertTrue(is("1").eq("1"));
+        assertTrue(is("0.1").eq("0.1"));
+        assertTrue(is(0.1D).eq(0.1F));
+        assertTrue(is((float)0.1D).eq(0.1F));
     }
 
     @Test

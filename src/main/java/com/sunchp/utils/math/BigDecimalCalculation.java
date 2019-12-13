@@ -1,8 +1,13 @@
 package com.sunchp.utils.math;
 
+import static com.sunchp.utils.math.BigDecimalUtils.stringSafeGetBigDecimal;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * @author albert
+ */
 public class BigDecimalCalculation {
     private final BigDecimal amount;
 
@@ -11,7 +16,11 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation(String amount) {
-        this.amount = new BigDecimal(amount);
+        this.amount = stringSafeGetBigDecimal(amount);
+    }
+
+    public BigDecimalCalculation(Number amount) {
+        this.amount = stringSafeGetBigDecimal(amount.toString());
     }
 
     public BigDecimalCalculation plus(BigDecimal value) {
@@ -19,7 +28,11 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation plus(String value) {
-        return plus(new BigDecimal(value));
+        return plus(stringSafeGetBigDecimal(value));
+    }
+
+    public BigDecimalCalculation plus(Number value) {
+        return plus(stringSafeGetBigDecimal(value.toString()));
     }
 
     public BigDecimalCalculation minus(BigDecimal value) {
@@ -27,7 +40,11 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation minus(String value) {
-        return minus(new BigDecimal(value));
+        return minus(stringSafeGetBigDecimal(value));
+    }
+
+    public BigDecimalCalculation minus(Number value) {
+        return minus(stringSafeGetBigDecimal(value.toString()));
     }
 
     public BigDecimalCalculation mul(BigDecimal value) {
@@ -35,7 +52,11 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation mul(String value) {
-        return mul(new BigDecimal(value));
+        return mul(stringSafeGetBigDecimal(value));
+    }
+
+    public BigDecimalCalculation mul(Number value) {
+        return mul(stringSafeGetBigDecimal(value.toString()));
     }
 
     public BigDecimalCalculation div(BigDecimal value) {
@@ -43,7 +64,11 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation div(String value) {
-        return div(new BigDecimal(value));
+        return div(stringSafeGetBigDecimal(value));
+    }
+
+    public BigDecimalCalculation div(Number value) {
+        return div(stringSafeGetBigDecimal(value.toString()));
     }
 
     public BigDecimalCalculation div(BigDecimal value, int scale) {
@@ -51,7 +76,11 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation div(String value, int scale) {
-        return div(new BigDecimal(value), scale);
+        return div(stringSafeGetBigDecimal(value), scale);
+    }
+
+    public BigDecimalCalculation div(Number value, int scale) {
+        return div(stringSafeGetBigDecimal(value.toString()), scale);
     }
 
     public BigDecimal result() {
